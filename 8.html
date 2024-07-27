@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student details</title>
+    <script>
+        function evals(){
+            let regno=document.forms['reg']['regno'].value;
+            let sub=document.forms['reg']['sub'].value;
+            let t1=parseInt(document.forms['reg']['t1'].value);
+            let t2=parseInt(document.forms['reg']['t2'].value);
+            let t3=parseInt(document.forms['reg']['t3'].value);
+            if(regno==""){
+                alert("No regno");
+                return false;
+            }
+            if(sub==""){
+                alert("No subcode");
+                return false;
+            }
+            if(t1>20||t2>20||t3>20){
+                alert("range overflow");
+                return false;
+            }
+            if(isNaN(t1)|isNaN(t2)||isNaN(t3)){
+                alert("Enter only numbers");
+                return false;
+            }
+            let m1=Math.max(t1,t2,t3);
+            let min=Math.min(t1,t2,t3);
+            let m2=t1+t2+t3-m1-min;
+            let avg=(m1+m2)/2;
+            alert("Average is "+avg);
+        }
+    </script>
+</head>
+<body>
+    <h1>Enter Details</h1>
+    <form name="reg" method="post" onsubmit="return evals()">
+        <label for="regno">Regno</label><br><br>
+        <input type="text" id="regno" name="regno"><br><br>
+        <label for="sub">SubjectCode</label><br><br>
+        <input type="text" id="sub" name="sub"><br><br>
+        <label for="t1">T1</label><br><br>
+        <input type="number" id="t1" name="t1"><br><br>
+        <label for="t2">T2</label><br><br>
+        <input type="number" id="t2" name="t2"><br><br>
+        <label for="t3">T3</label><br><br>
+        <input type="number" id="t3" name="t3"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

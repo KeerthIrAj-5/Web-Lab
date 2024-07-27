@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation</title>
+    <script>
+        function validate(){
+        let name=document.forms['reg']['name'].value;
+        let email=document.forms['reg']['email'].value;
+        let mno=document.forms['reg']['mno'].value;
+        let gender=document.forms['reg']['gender'].value;
+        let fc=document.forms['reg']['fc'].value;
+        if(name==""){
+            alert("No name");
+            return false;
+        }
+        if(!email.includes(".")||!email.includes("@")){
+            alert("Email p");
+            return false;
+        }
+        if(mno==""||mno.length!=10){
+            alert("Mno p");
+            return false;
+        }
+        if(gender==""){
+            alert("Gender p");
+            return false;
+
+        }
+        if(fc==""){
+            alert("fc problem");
+            return false;
+        }
+        document.getElementById("area").value=name+email+mno+gender+fc;
+        event.preventDefault();
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return validate()" name="reg">
+    <label for="name">Name</label><br><br>
+    <input type="text" id="name" name="name"><br><br>
+    <label for="email">Email</label><br><br>
+    <input type="email" id="email" name="email"><br><br>
+    <label for="mno">MobileNumber</label><br><br>
+    <input type="number" id="mno" name="mno"><br><br>
+    <label for="gender">Gender</label><br><br>
+    <select name="gender" id="gender">
+        <option >Select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select><br><br>
+    <label for="fc">Favorite color</label><br><br>
+    <input type="text" id="fc" name="fc"><br><br>
+    <input type="submit" value="Submit"><br><br>
+    <textarea id="area" rows="6" cols="50"></textarea>
+    </form>
+</body>
+</html>

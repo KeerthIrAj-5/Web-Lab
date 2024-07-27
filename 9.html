@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <script>
+        function validate(){
+            let user=document.forms['reg']['user'].value;
+            let name=document.forms['reg']['name'].value;
+            let pass=document.forms['reg']['pass'].value;
+            let email=document.forms['reg']['email'].value;
+            if(user.length<5||user.length>12){
+                alert("Nope userid");
+                return false;
+            }
+            if(name.length<15||!/^[a-zA-Z]+$/.test(name)){
+                alert("Nope name");
+                return false;
+            }
+            let t=/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[a-zA-Z\d!@#$%^&*()]{8,}$/;
+            if(!t.test(pass)){
+                alert("Nope pass");
+                return false;
+            }
+            let e=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if(!e.test(email)){
+                alert("Nope email");
+                return false;
+            }
+            document.getElementById("area").value=user+name+pass+email;
+            event.preventDefault();
+        }
+    </script>
+</head>
+<body>
+    <h1>Registration</h1>
+    <form name="reg" onsubmit="return validate()" method="post">
+        <label for="user">Userid</label><br><br>
+        <input type="text" id="user" name="user"><br><br>
+        <label for="name">Name</label><br><br>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="pass">Password</label><br><br>
+        <input type="text" id="pass" name="pass"><br><br>
+        <label for="email">Password</label><br><br>
+        <input type="text" id="email" name="email"><br><br>
+        <input type="submit" value="Register"><br><br>
+        <textarea id="area" rows="6" cols="50"></textarea>
+    </form>
+</body>
+</html>
